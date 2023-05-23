@@ -41,4 +41,15 @@ describe('User Service Login', () => {
     // asert
     expect(response).toEqual([myUser, myUser2])
   })
+
+  it('get facebook external sessions', () => {
+    // arrange
+    const service = new UserLoginService()
+
+    // act
+    const response = service.getExternalSessions()
+
+    // asert
+    expect(response).toEqual(20)
+  })
 })
