@@ -4,6 +4,9 @@ import { MockSessionManager } from './doubles/mockSessionManager'
 
 describe('User Service Login', () => {
   const mockSessionManager = new MockSessionManager()
+  mockSessionManager.addValidUsername('javiducun')
+  mockSessionManager.setSessions(20)
+
   it('should log a user', () => {
     // arrange
     const service = new UserLoginService(mockSessionManager)
