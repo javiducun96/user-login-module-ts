@@ -11,6 +11,10 @@ export class UserLoginService {
     return 'User successfully logged in'
   }
 
+  public getLoggedUsers = () => {
+    return this.loggedUsers
+  }
+
   private addLoggedUser = (user: User) => {
     this.loggedUsers.push(user)
   }
