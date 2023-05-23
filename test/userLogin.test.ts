@@ -80,10 +80,9 @@ describe('User Service Login', () => {
     // act
     service.login('javiducun', 'password')
     const response = service.getLoggedUsers()
-    const containsUser = response.some(res => res.getUserName() === 'javiducun')
 
     // asert
-    expect(response).toBe([new User('javiducun')])
+    expect(response[0].getUserName()).toBe('javiducun')
     //expect(JSON.stringify(response)).toStrictEqual(JSON.stringify([new User('javiducun')]))
   })
 
