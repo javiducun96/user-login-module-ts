@@ -12,8 +12,8 @@ export class MockSessionManager implements SessionManager {
   }
 
   logout(userName: string): boolean {
-    // TODO
-    return true
+    if (!this.logoutError) return true
+    throw Error(this.logoutError)
   }
 
   getSessions(): number {
@@ -23,5 +23,9 @@ export class MockSessionManager implements SessionManager {
   addValidUsernameAndPassword(username: string, password: string) {
     this.validUsername = username
     this.validPassword = password
+  }
+
+  setLogoutError(logoutError: string) {
+    this.logoutError = logoutError
   }
 }
