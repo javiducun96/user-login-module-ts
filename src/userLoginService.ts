@@ -22,6 +22,10 @@ export class UserLoginService {
     this.loggedUsers.push(user)
   }
 
+  private removeLoggedUser = (username: string) => {
+    this.loggedUsers = this.loggedUsers.filter(user => user.getUserName() !== username)
+  }
+
   private isUserAlreadyLogged = (user: User) =>
     this.loggedUsers.some(loggedUser => loggedUser.getUserName() === user.getUserName())
 
@@ -38,6 +42,7 @@ export class UserLoginService {
   }
 
   public logout = (username: string) => {
+    this.removeLoggedUser(username)
     return 'User logged out'
   }
 }

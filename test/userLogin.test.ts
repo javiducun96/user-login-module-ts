@@ -83,7 +83,6 @@ describe('User Service Login', () => {
 
     // asert
     expect(response[0].getUserName()).toBe('javiducun')
-    //expect(JSON.stringify(response)).toStrictEqual(JSON.stringify([new User('javiducun')]))
   })
 
   it('wrong login from sessionManager', () => {
@@ -111,5 +110,22 @@ describe('User Service Login', () => {
 
     // asert
     expect(response).toEqual('User logged out')
+  })
+
+  it('user removed from list on logout', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
+    const service = new UserLoginService(mockSessionManager)
+
+    // act
+    service.login('javiducun', 'password')
+    const logedUsers1 = service.getLoggedUsers()
+    service.logout('javiducun')
+    const logedUsers2 = service.getLoggedUsers()
+
+    // asert
+    expect(logedUsers1[0].getUserName()).toBe('javiducun')
+    expect(logedUsers2).toHaveLength(0)
   })
 })
