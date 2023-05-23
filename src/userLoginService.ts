@@ -36,4 +36,8 @@ export class UserLoginService {
     }
     return 'Login incorrecto'
   }
+
+  public logout = (username: string) => {
+    return 'User logged out'
+  }
 }

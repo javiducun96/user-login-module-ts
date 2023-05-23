@@ -98,4 +98,18 @@ describe('User Service Login', () => {
     // asert
     expect(response).toEqual('Login incorrecto')
   })
+
+  it('logout from sessionManager', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
+    const service = new UserLoginService(mockSessionManager)
+
+    // act
+    service.login('javiducun', 'wrong password')
+    const response = service.logout('javiducun')
+
+    // asert
+    expect(response).toEqual('User logged out')
+  })
 })
