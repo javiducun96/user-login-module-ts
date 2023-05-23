@@ -1,22 +1,21 @@
 import { SessionManager } from '../../src/sessionManager'
 
 export class MockSessionManager implements SessionManager {
-  private validUsernames: string[] = []
-  private sessions: number = 0
+  private validUsername: string
+  private validPassword: string
 
   login(userName: string, password: string): boolean {
-    return this.validUsernames.includes(userName)
+    if (this.validUsername && this.validUsername === userName && this.validPassword && this.validPassword === password)
+      return true
+    return false
   }
 
   getSessions(): number {
-    return this.sessions
+    throw Error('This method should not be called')
   }
 
-  setSessions(sessions: number) {
-    this.sessions = sessions
-  }
-
-  addValidUsername(username: string) {
-    this.validUsernames.push(username)
+  addValidUsernameAndPassword(username: string, password: string) {
+    this.validUsername = username
+    this.validPassword = password
   }
 }
