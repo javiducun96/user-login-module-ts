@@ -42,6 +42,9 @@ export class UserLoginService {
   }
 
   public logout = (username: string) => {
+    if (!this.isUserAlreadyLogged(new User(username))) {
+      return 'User not found'
+    }
     this.removeLoggedUser(username)
     return 'User logged out'
   }

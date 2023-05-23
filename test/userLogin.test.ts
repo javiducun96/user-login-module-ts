@@ -128,4 +128,17 @@ describe('User Service Login', () => {
     expect(logedUsers1[0].getUserName()).toBe('javiducun')
     expect(logedUsers2).toHaveLength(0)
   })
+
+  it('logout user not found', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
+    const service = new UserLoginService(mockSessionManager)
+
+    // act
+    const response = service.logout('javiducun')
+
+    // asert
+    expect(response).toEqual('User not found')
+  })
 })
