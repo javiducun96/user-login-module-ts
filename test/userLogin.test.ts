@@ -87,16 +87,16 @@ describe('User Service Login', () => {
     //expect(JSON.stringify(response)).toStrictEqual(JSON.stringify([new User('javiducun')]))
   })
 
-  //   it('wrong login from sessionManager', () => {
-  //     // arrange
-  //     const mockSessionManager = new MockSessionManager()
-  //     mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
-  //     const service = new UserLoginService(mockSessionManager)
+  it('wrong login from sessionManager', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
+    const service = new UserLoginService(mockSessionManager)
 
-  //     // act
-  //     const response = service.login('javiducun', 'wrong password')
+    // act
+    const response = service.login('javiducun', 'wrong password')
 
-  //     // asert
-  //     expect(response).toEqual('Login incorrecto')
-  //   })
+    // asert
+    expect(response).toEqual('Login incorrecto')
+  })
 })
