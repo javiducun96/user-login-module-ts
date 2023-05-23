@@ -7,6 +7,10 @@ export class StubSessionManager implements SessionManager {
     throw Error('This method should not be called')
   }
 
+  logout(userName: string): boolean {
+    throw Error('This method should not be called')
+  }
+
   getSessions(): number {
     return this.sessions
   }

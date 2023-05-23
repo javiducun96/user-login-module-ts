@@ -5,6 +5,10 @@ export class DummySessionManager implements SessionManager {
     throw Error('This method should not be called')
   }
 
+  logout(userName: string): boolean {
+    throw Error('This method should not be called')
+  }
+
   getSessions(): number {
     throw Error('This method should not be called')
   }

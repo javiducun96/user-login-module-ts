@@ -83,7 +83,7 @@ describe('User Service Login', () => {
     const containsUser = response.some(res => res.getUserName() === 'javiducun')
 
     // asert
-    expect(containsUser).toBeTruthy()
+    expect(response).toBe([new User('javiducun')])
     //expect(JSON.stringify(response)).toStrictEqual(JSON.stringify([new User('javiducun')]))
   })
 
