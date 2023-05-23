@@ -7,8 +7,12 @@ export class UserLoginService {
     if (this.isUserAlreadyLogged(user)) {
       return 'User already logged in'
     }
-    this.loggedUsers.push(user)
+    this.addLoggedUser(user)
     return 'User successfully logged in'
+  }
+
+  private addLoggedUser = (user: User) => {
+    this.loggedUsers.push(user)
   }
 
   private isUserAlreadyLogged = (user: User) =>
