@@ -1,12 +1,12 @@
-import {User} from "./user"
+import { User } from './user'
 
 export class UserLoginService {
-    private loggedUsers: User[] = []
+  private loggedUsers: User[] = []
 
-    public manualLogin = (): string => {
-        return "user logged"
-    }
+  public manualLogin = (): string => {
+    return 'user logged'
+  }
 
-
-    private isUserAlreadyLogged = (user: User)=> this.loggedUsers.some(loggedUser => loggedUser.getUserName() === user.getUserName())
+  private isUserAlreadyLogged = (user: User) =>
+    this.loggedUsers.some(loggedUser => loggedUser.getUserName() === user.getUserName())
 }
