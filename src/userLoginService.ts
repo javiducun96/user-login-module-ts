@@ -30,7 +30,11 @@ export class UserLoginService {
   }
 
   public login = (username: string, password: string) => {
-    if (this.sessionManager.login(username, password)) return 'Login correcto'
+    if (this.sessionManager.login(username, password)) {
+      const user: User = new User(username)
+      this.manualLogin(user)
+      return 'Login correcto'
+    }
     return ''
   }
 }

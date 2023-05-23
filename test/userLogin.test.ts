@@ -71,16 +71,19 @@ describe('User Service Login', () => {
     expect(response).toEqual('Login correcto')
   })
 
-  //   it('login user from sessionManager is in loggedUser array', () => {
-  //     // arrange
-  //     const mockSessionManager = new MockSessionManager()
-  //     mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
-  //     const service = new UserLoginService(mockSessionManager)
+  it('login user from sessionManager is in loggedUser array', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.addValidUsernameAndPassword('javiducun', 'password')
+    const service = new UserLoginService(mockSessionManager)
+    const user: User = new User('javiducun')
+    const expectedArray: User[] = [user]
 
-  //     // act
-  //     const response = service.login('wrong username', 'wrong password')
+    // act
+    service.login('javiducun', 'password')
+    const response = service.getLoggedUsers()
 
-  //     // asert
-  //     expect(response).toEqual('Login incorrecto')
-  //   })
+    // asert
+    expect(response).toEqual(expectedArray)
+  })
 })
