@@ -28,4 +28,9 @@ export class UserLoginService {
   public getExternalSessions = () => {
     return this.sessionManager.getSessions()
   }
+
+  public login = (username: string, password: string) => {
+    if (this.sessionManager.login(username, password)) return 'Login correcto'
+    return ''
+  }
 }

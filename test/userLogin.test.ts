@@ -57,4 +57,15 @@ describe('User Service Login', () => {
     // asert
     expect(response).toEqual(20)
   })
+
+  it('login user from sessionManager', () => {
+    // arrange
+    const service = new UserLoginService(mockSessionManager)
+
+    // act
+    const response = service.login('javiducun', 'password')
+
+    // asert
+    expect(response).toEqual('Login correcto')
+  })
 })
