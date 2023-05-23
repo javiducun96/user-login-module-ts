@@ -26,4 +26,19 @@ describe('User Service Login', () => {
     // asert
     expect(response).toEqual('User already logged in')
   })
+
+  it('get Logged User array', () => {
+    // arrange
+    const service = new UserLoginService()
+    const myUser = new User('javiducun')
+    const myUser2 = new User('javiducun2')
+
+    // act
+    service.manualLogin(myUser)
+    service.manualLogin(myUser2)
+    const response = service.getLoggedUsers()
+
+    // asert
+    expect(response).toEqual([myUser, myUser2])
+  })
 })
