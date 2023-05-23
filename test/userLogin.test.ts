@@ -1,10 +1,12 @@
 import { User } from '../src/user'
 import { UserLoginService } from '../src/userLoginService'
+import { MockSessionManager } from './doubles/mockSessionManager'
 
 describe('User Service Login', () => {
+  const mockSessionManager = new MockSessionManager()
   it('should log a user', () => {
     // arrange
-    const service = new UserLoginService()
+    const service = new UserLoginService(mockSessionManager)
     const myUser = new User('javiducun')
 
     // act
@@ -16,7 +18,7 @@ describe('User Service Login', () => {
 
   it('is user already loged in', () => {
     // arrange
-    const service = new UserLoginService()
+    const service = new UserLoginService(mockSessionManager)
     const myUser = new User('javiducun')
 
     // act
@@ -29,7 +31,7 @@ describe('User Service Login', () => {
 
   it('get Logged User array', () => {
     // arrange
-    const service = new UserLoginService()
+    const service = new UserLoginService(mockSessionManager)
     const myUser = new User('javiducun')
     const myUser2 = new User('javiducun2')
 
@@ -44,7 +46,7 @@ describe('User Service Login', () => {
 
   it('get facebook external sessions', () => {
     // arrange
-    const service = new UserLoginService()
+    const service = new UserLoginService(mockSessionManager)
 
     // act
     const response = service.getExternalSessions()

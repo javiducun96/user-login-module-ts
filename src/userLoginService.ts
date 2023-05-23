@@ -1,14 +1,10 @@
-import { MockFacebookSessionManager } from './mockFacebookSessionManager'
 import { SessionManager } from './sessionManager'
 import { User } from './user'
 
 export class UserLoginService {
   private loggedUsers: User[] = []
-  private sessionManager: SessionManager
 
-  constructor() {
-    this.sessionManager = new MockFacebookSessionManager()
-  }
+  constructor(private sessionManager: SessionManager) {}
 
   public manualLogin = (user: User): string => {
     if (this.isUserAlreadyLogged(user)) {

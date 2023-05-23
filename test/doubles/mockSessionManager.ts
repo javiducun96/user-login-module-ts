@@ -1,6 +1,6 @@
-import { SessionManager } from './sessionManager'
+import { SessionManager } from '../../src/sessionManager'
 
-export class MockFacebookSessionManager implements SessionManager {
+export class MockSessionManager implements SessionManager {
   login(userName: string, password: string): boolean {
     return userName === 'javiducun'
   }
