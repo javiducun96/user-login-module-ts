@@ -141,4 +141,17 @@ describe('User Service Login', () => {
     // asert
     expect(response).toEqual('User not found')
   })
+
+  it('external service not available', () => {
+    // arrange
+    const mockSessionManager = new MockSessionManager()
+    mockSessionManager.setLogoutError('ServiceNotAvailable')
+    const service = new UserLoginService(mockSessionManager)
+
+    // act
+    const response = service.login('javiducun', 'pass')
+
+    // asert
+    expect(response).toEqual('ServiceNotAvailable')
+  })
 })
