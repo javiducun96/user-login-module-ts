@@ -105,7 +105,7 @@ describe('User Service Login', () => {
     const service = new UserLoginService(mockSessionManager)
 
     // act
-    service.login('javiducun', 'wrong password')
+    service.login('javiducun', 'password')
     const response = service.logout('javiducun')
 
     // asert
