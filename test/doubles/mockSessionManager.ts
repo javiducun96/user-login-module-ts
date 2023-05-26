@@ -6,6 +6,8 @@ export class MockSessionManager implements SessionManager {
   private logoutError: string
 
   login(userName: string, password: string): boolean {
+    if (this.logoutError) throw this.logoutError
+
     if (this.validUsername && this.validUsername === userName && this.validPassword && this.validPassword === password)
       return true
     return false

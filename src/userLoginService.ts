@@ -34,9 +34,13 @@ export class UserLoginService {
   }
 
   public login = (username: string, password: string) => {
-    if (this.sessionManager.login(username, password)) {
-      this.addLoggedUser(new User(username))
-      return 'Login correcto'
+    try {
+      if (this.sessionManager.login(username, password)) {
+        this.addLoggedUser(new User(username))
+        return 'Login correcto'
+      }
+    } catch (ex) {
+      return ex
     }
     return 'Login incorrecto'
   }
